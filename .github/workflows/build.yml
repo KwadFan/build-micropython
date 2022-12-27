@@ -35,21 +35,30 @@ jobs:
           submodules: "true"
           path: "micropython"
 
-      - name: DEBUG Output
+      - name: DEBUG
         run: |
           ls -l
+          cd micropython/
+          make -C mpy-cross/
+          git submodule update --init -- lib/pico-sdk
+          git submodule update --init -- lib/tinyusb
+          cd lib/pico-sdk
+          git submodule update --init
+          cd ../..
+          cd ports/rp2
+          make -j4
 
-      - name: Build Submodules
-        run: |
-          cd micropython
-          make -j$(nproc) -C ports/rp2 submodules
+      # - name: Build Submodules
+      #   run: |
+      #     cd micropython
+      #     make -j$(nproc) -C ports/rp2 submodules
 
-      - name: Build mpy-cross
-        run: |
-          cd micropython
-          make -j$(nproc) -C mpy-cross
+      # - name: Build mpy-cross
+      #   run: |
+      #     cd micropython
+      #     make -j$(nproc) -C mpy-cross
 
-      - name: Build Firmware (rp2)
-        run: |
-          cd micropython/ports/rp2
-          make -j$(nproc)
+      # - name: Build Firmware (rp2)
+      #   run: |
+      #     cd micropython/ports/rp2
+      #     make -j$(nproc)
