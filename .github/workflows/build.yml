@@ -7,7 +7,7 @@ on:
         branches:
             - "**"
 
-workflow_dispatch:
+  workflow_dispatch:
 
 env:
     BUILD_DEPS: cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
