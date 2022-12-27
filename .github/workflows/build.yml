@@ -26,6 +26,10 @@ jobs:
           repository: "micropython/micropython"
           ref: "master"
 
+      - name: DEBUG Output
+        run: |
+          ls -l
+
       - name: Build Submodules
         run: |
           cd micropython
