@@ -51,7 +51,15 @@ jobs:
           cd micropython/ports/rp2
           make -j$(nproc)
 
-      - name: DEBUG - Show firmware Files
+      - name: Copy files to firmware
         run: |
-          cd micropython/ports/rp2/build-PICO
-          ls -l
+          cd
+          mkdir firmware
+          cp micropython/ports/rp2/build-PICO/firmware.{elf,uf2} firmware/
+          ls -l firmware/
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: micropython
+          path: firmware/firmware.*
