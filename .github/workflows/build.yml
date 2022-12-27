@@ -1,4 +1,3 @@
-# Build Micropython from source
 name: build Micropython
 
 on:
