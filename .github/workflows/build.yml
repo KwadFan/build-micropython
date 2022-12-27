@@ -2,7 +2,8 @@ name: build Micropython
 
 on:
   push:
-  branches: "**"
+  branches:
+    - "**"
 
   workflow_dispatch:
 
@@ -16,5 +17,5 @@ jobs:
     steps:
       - name: Install build dependencies
         run: |
-          apt-get update
-          apt-get install --yes --no-install-recommends $BUILD_DEPS
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends $BUILD_DEPS
