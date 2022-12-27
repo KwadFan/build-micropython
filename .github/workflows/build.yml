@@ -50,3 +50,8 @@ jobs:
         run: |
           cd micropython/ports/rp2
           make -j$(nproc)
+
+      - name: DEBUG: Show firmware Files
+        run: |
+          cd micropython/ports/rp2/build-PICO
+          ls -l
