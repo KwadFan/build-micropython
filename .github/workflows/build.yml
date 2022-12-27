@@ -25,6 +25,7 @@ jobs:
         with:
           repository: "micropython/micropython"
           ref: "master"
+          path: "micropython"
 
       - name: DEBUG Output
         run: |
