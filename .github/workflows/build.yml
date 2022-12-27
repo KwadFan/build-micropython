@@ -53,7 +53,7 @@ jobs:
 
       - name: Copy files to firmware
         run: |
-          cd
+          cd ~
           mkdir firmware
           cp micropython/ports/rp2/build-PICO/firmware.{elf,uf2} firmware/
           ls -l firmware/
