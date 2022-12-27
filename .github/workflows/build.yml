@@ -25,3 +25,18 @@ jobs:
         with:
           repository: "micropython/micropython"
           ref: "master"
+
+      - name: Build Submodules
+        run: |
+          cd micropython
+          make -j$(nproc) -C ports/rp2 submodules
+
+      - name: Build mpy-cross
+        run: |
+          cd micropython
+          make -j$(nproc) -C mpy-cross
+
+      - name: Build Firmware (rp2)
+        run: |
+          cd micropython/ports/rp2
+          make -j$(nproc)
