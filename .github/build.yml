@@ -1,0 +1,24 @@
+# Build Micropython from source
+
+name: build Micropython
+
+on:
+  push:
+    branches:
+      - "**"
+
+workflow_dispatch:
+
+
+env:
+  BUILD_DEPS:  cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
+
+jobs:
+  setup-env:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install build dependencies
+      run: |
+        apt-get update
+        apt-get install --yes --no-install-recommends $BUILD_DEPS
